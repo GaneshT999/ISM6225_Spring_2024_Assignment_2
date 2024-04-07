@@ -51,13 +51,13 @@ namespace ISM6225_Spring_2024_Assignment_2
 
             //Question 6:
             Console.WriteLine("Question 6:");
-            int[] nums5 = { 3,6,9,1 };
+            int[] nums5 = { 3, 6, 9, 1 };
             int maxGap = MaximumGap(nums5);
             Console.WriteLine(maxGap);
 
             //Question 7:
             Console.WriteLine("Question 7:");
-            int[] nums6 = { 2,1,2 };
+            int[] nums6 = { 2, 1, 2 };
             int largestPerimeterResult = LargestPerimeter(nums6);
             Console.WriteLine(largestPerimeterResult);
 
@@ -113,7 +113,7 @@ namespace ISM6225_Spring_2024_Assignment_2
                 for (int i = 1; i < nums.Length; i++)
                 {
                     // If the current element is different from the previous one, 
-                    
+
                     if (nums[i] != nums[i - 1])
                     {
                         // Initializing the indexth element in the array with current.
@@ -158,33 +158,27 @@ namespace ISM6225_Spring_2024_Assignment_2
         {
             try
             {
-                // Handling the corner case where the input array is empty
-                if (nums.Length == 0)
-                {
-                    return new List<int>(); // Returns an empty list if input array is empty
-                }
-                // Traversing the array
-                for (int i = 0; i < nums.Length; i++)
 
-                {// Checking if the current element is 0 
-                    if (nums[i] == 0)
+                int l = 0; // Pointer for non-zero elements will only increase if the element is non zero.
+
+                for (int r = 0; r < nums.Length; r++)
+                {
+                    if (nums[r] != 0)
                     {
-                        // Finding the next non-zero element and swaping it with the current zero element
-                        // by traversing the array from i+1th element.
-                        for (int j = i + 1; j < nums.Length; j++)
-                        {
-                            if (nums[j] != 0)
-                            {
-                                nums[i] = nums[j];
-                                nums[j] = 0;
-                                break;
-                            }
-                        }
+                        // Swaping non-zero element with the element at l
+                        int temp = nums[l];
+                        nums[l] = nums[r];
+                        nums[r] = temp;
+
+                        // Move l pointer forward
+                        l++;
                     }
                 }
+            
 
                 return nums; // Returns the modified array
-            }
+                             }
+        
             catch (Exception)
             {
                 throw; 
